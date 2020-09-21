@@ -1,0 +1,53 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ecomb
+    username: root
+    password: root
+    hikari:
+      #minimum-idle: 5
+      #注意调节这个：连接池中允许的最大连接数。缺省值：10；推荐的公式：((core_count * 2) + effective_spindle_count)
+      maximum-pool-size: 15
+      auto-commit: true
+      #一个连接idle状态的最大时长（毫秒），超时则被释放（retired），缺省:10分钟
+      idle-timeout: 30000
+      pool-name: JoyHikariCP
+      #注意调节这个：一个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），缺省:30分钟，建议设置比数据库超时时长少30秒
+      max-lifetime: 1730000
+      #等待连接池分配连接的最大时长（毫秒），超过这个时长还没可用的连接则发生SQLException， 缺省:30秒
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+#    resource: classpath*:/**/mapper/*.xml
+#    packages: cn.ecomb.provider.**.mapper
+mybatis:
+#  type-aliases-package: cn.ecomb.provider.**.mapper
+#  config-location: classpath*:/mybatis-config.xml
+  mapper-locations: classpath*:/*/mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+#  redis:
+#    host: 127.0.0.1
+#    port: 6379
+#    password:
+#    database: 10
+#    lettuce:
+#      pool:
+#        max-active: 500
+#        max-idle: 100
+#        min-idle: 20
+#        max-wait: 10000
+#    timeout: 5000
+
+## Swagger
+swagger:
+  host:
+  title: ecomb 接口文档
+  description: ecomb 接口文档
+  disabled: false # 是否禁用swagger
+  redirect-uri: / # 禁用swagger时的重定向地址
+project:
+  version: 2.0
+

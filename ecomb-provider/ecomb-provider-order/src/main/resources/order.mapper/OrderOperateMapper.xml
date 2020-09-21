@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ecomb.provider.order.mapper.IOrderOperateMapper">
+
+  <insert id="addOrderOperate">
+    insert into tbl_order_operate(order_id, order_status, operate_man, create_time, note)
+     values (#{orderId}, #{orderStatus}, #{operateMan}, #{createTime}, #{note})
+  </insert>
+
+  <update id="updateOrderOperate" parameterType="cn.ecomb.provider.api.order.entity.OrderOperate">
+    update tbl_order_operate set order_status = #{orderStatus}, operate_man = #{operateMan}, create_time = #{createTime}, note = #{note}
+    where order_id = #{orderId}
+  </update>
+
+  <select id="listOrderOperateByOrderId" resultType="cn.ecomb.provider.api.order.entity.OrderOperate">
+    select * from tbl_order_operate where order_id = #{orderId}
+  </select>
+
+</mapper>
