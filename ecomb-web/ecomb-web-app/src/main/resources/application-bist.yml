@@ -18,8 +18,19 @@ spring:
       #等待连接池分配连接的最大时长（毫秒），超过这个时长还没可用的连接则发生SQLException， 缺省:30秒
       connection-timeout: 30000
       connection-test-query: SELECT 1
-#    resource: classpath*:/**/mapper/*.xml
-#    packages: cn.ecomb.provider.**.mapper
+  redis:
+    host: 127.0.0.1
+    port: 6380
+    password:
+    database: 10
+    lettuce:
+      pool:
+        max-active: 500
+        max-idle: 100
+        min-idle: 20
+        max-wait: 10000
+    timeout: 5000
+
 mybatis:
 #  type-aliases-package: cn.ecomb.provider.**.mapper
 #  config-location: classpath*:/mybatis-config.xml
@@ -27,19 +38,6 @@ mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
-
-#  redis:
-#    host: 127.0.0.1
-#    port: 6379
-#    password:
-#    database: 10
-#    lettuce:
-#      pool:
-#        max-active: 500
-#        max-idle: 100
-#        min-idle: 20
-#        max-wait: 10000
-#    timeout: 5000
 
 ## Swagger
 swagger:

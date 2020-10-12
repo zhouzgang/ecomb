@@ -85,6 +85,7 @@
 - message格式：\<type>(\<scope>): \<subject> 其中，Header 是必需的，Body 和 Footer 可以省略。
 - （1）type用于说明 commit 的类别，只允许使用下面7个标识。
   - feature：新功能（feature）
+  - tech：技术点实践
   - fix：修补bug
   - docs：文档（documentation）
   - style： 格式（不影响代码运行的变动）
@@ -112,6 +113,7 @@
 - redis 集群
 - 搭建并集成配置中心
 - 搭建并集成消息队列
+- JVM 调优，并发调优，数据库调优（模拟订单操作订单功能生产数据）
 
 ** Step-3 **
 - 注册中心
