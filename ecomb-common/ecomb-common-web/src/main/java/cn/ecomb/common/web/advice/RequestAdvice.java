@@ -6,7 +6,6 @@ import cn.ecomb.common.provider.api.utils.SxEDUtils;
 import cn.ecomb.common.web.annotation.Crypt;
 import cn.ecomb.common.web.annotation.EcombApi;
 import cn.ecomb.common.web.annotation.InterfaceSecurityStrategy;
-import cn.ecomb.common.web.config.SpringContextProvider;
 import cn.ecomb.common.web.exception.WebException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
