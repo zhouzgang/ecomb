@@ -4,6 +4,7 @@
 ** todo 列表 **
 [] 接入 Redis，封装使用组件（放到 step-1-2 去做）
 [] 分布式锁组件（放到 step-1-2 去做）
+[] 使用 redisson
 
 ### 话题整理
 - Redis 模式搭建
@@ -15,3 +16,7 @@
 - 缓存击穿与雪崩
 - RedLock，对比分布式锁不同实现的优缺点
 - Redis 事件原理，线程模型
+
+### 文档
+- (redisson)[https://github.com/redisson/redisson/wiki/%E7%9B%AE%E5%BD%95]
+- (redis)[http://redis.cn/topics/sentinel.html]

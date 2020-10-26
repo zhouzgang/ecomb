@@ -3,7 +3,11 @@ package cn.ecomb.common.provider.sao.pay;
 import cn.ecomb.common.provider.sao.pay.request.PayRequest;
 import cn.ecomb.common.provider.sao.pay.response.PayResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import javax.annotation.Resource;
 
 /**
  * 调用外部支付服务接口
@@ -15,6 +19,9 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 public class PaySao {
+
+	@Resource(name = "payResource")
+	private RestTemplate restTemplate;
 
 	public PayResponse pay(PayRequest request) {
 		log.info("支付……");

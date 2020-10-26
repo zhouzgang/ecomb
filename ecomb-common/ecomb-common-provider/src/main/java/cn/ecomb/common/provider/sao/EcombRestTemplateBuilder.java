@@ -1,5 +1,6 @@
 package cn.ecomb.common.provider.sao;
 
+import cn.ecomb.common.provider.sao.interceptor.SaoCommonInterceptor;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.config.Registry;
@@ -27,38 +28,14 @@ import java.util.function.Supplier;
 @Component
 public class EcombRestTemplateBuilder {
 
-    @Bean(name = "mweeResource")
-    RestTemplate mweeRestTemplateBuilder(
+    @Bean(name = "payResource")
+    public RestTemplate PayRestTemplateBuilder(
             @Qualifier("httpRequestFactory") ClientHttpRequestFactory clientHttpRequestFactory) {
         RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
         restTemplateBuilder.requestFactory((Supplier) () -> {
             return clientHttpRequestFactory;
         });
-//        restTemplateBuilder.additionalInterceptors(new MweeInterceptor());
-        RestTemplate restTemplate = restTemplateBuilder.build();
-        return restTemplate;
-    }
-
-    @Bean(name = "kouBeiResource")
-    RestTemplate KouBeiRestTemplateBuilder(
-            @Qualifier("httpRequestFactory") ClientHttpRequestFactory clientHttpRequestFactory) {
-        RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
-        restTemplateBuilder.requestFactory((Supplier) () -> {
-            return clientHttpRequestFactory;
-        });
-//        restTemplateBuilder.additionalInterceptors(new KouBeiInterceptor());
-        RestTemplate restTemplate = restTemplateBuilder.build();
-        return restTemplate;
-    }
-
-    @Bean(name = "SxMallResource")
-    RestTemplate SxMallRestTemplateBuilder(
-            @Qualifier("httpRequestFactory") ClientHttpRequestFactory clientHttpRequestFactory) {
-        RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
-        restTemplateBuilder.requestFactory((Supplier) () -> {
-            return clientHttpRequestFactory;
-        });
-//        restTemplateBuilder.additionalInterceptors(new SxMallInterceptor());
+        restTemplateBuilder.additionalInterceptors(new SaoCommonInterceptor());
         RestTemplate restTemplate = restTemplateBuilder.build();
         return restTemplate;
     }

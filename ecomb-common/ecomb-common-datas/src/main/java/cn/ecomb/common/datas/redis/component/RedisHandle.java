@@ -3,7 +3,9 @@ package cn.ecomb.common.datas.redis.component;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
@@ -33,7 +35,7 @@ public class RedisHandle {
 	public boolean expire(String key, long time) {
 		try {
 			if (time > 0) {
-				redisTemplate.expire(key, time, TimeUnit.SECONDS);
+				redisTemplate.expire(key, time, TimeUnit.MILLISECONDS);
 			}
 			return true;
 		} catch (Exception e) {
@@ -48,7 +50,7 @@ public class RedisHandle {
 	 * @return
 	 */
 	public long getExpire(String key) {
-		return redisTemplate.getExpire(key, TimeUnit.SECONDS);
+		return redisTemplate.getExpire(key, TimeUnit.MILLISECONDS);
 	}
 
 	/**
@@ -80,6 +82,10 @@ public class RedisHandle {
 				redisTemplate.delete(CollectionUtils.arrayToList(key));
 			}
 		}
+	}
+
+	public Object command(RedisScript script, List<String> keys, Object... args) {
+		return redisTemplate.execute(script, keys, args);
 	}
 
 //    ============================== String ==============================
@@ -119,11 +125,30 @@ public class RedisHandle {
 	public boolean set(String key, Object value, long time) {
 		try {
 			if (time > 0) {
-				redisTemplate.opsForValue().set(key, value, time, TimeUnit.SECONDS);
+				redisTemplate.opsForValue().set(key, value, time, TimeUnit.MILLISECONDS);
 			} else {
 				set(key, value);
 			}
 			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	/**
+	 * 如果不存在，则设置 value
+	 * @param key 键
+	 * @param value 值
+	 * @param time 时间（秒），如果 time < 0 则设置无限时间
+	 * @return true / false
+	 */
+	public boolean setNx(String key, Object value, long time) {
+		try {
+			if (time <= 0) {
+				return false;
+			}
+			return redisTemplate.opsForValue().setIfAbsent(key, value, time, TimeUnit.MILLISECONDS);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
