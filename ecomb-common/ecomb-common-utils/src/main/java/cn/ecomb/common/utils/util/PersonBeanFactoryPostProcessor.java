@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @author brian.zhou
  * @date 2020/10/22
  */
-@Component
+//@Component
 @Slf4j
 public class PersonBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 
