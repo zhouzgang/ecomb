@@ -23,6 +23,13 @@ spring:
     port: 6380
     password:
     database: 10
+#    如果配置集群
+#    cluster:
+#      nodes:
+#        - redis-dev.myhll.cn:6910
+#        - redis-dev.myhll.cn:6911
+#        - redis-dev.myhll.cn:6911
+#      max-redirects: 3 # 获取失败 最大重定向次数
     lettuce:
       pool:
         max-active: 500
