@@ -26,9 +26,9 @@ spring:
 #    如果配置集群
 #    cluster:
 #      nodes:
-#        - redis-dev.myhll.cn:6910
-#        - redis-dev.myhll.cn:6911
-#        - redis-dev.myhll.cn:6911
+#        - 192.18.1.2:6380
+#        - 192.18.1.3:6381
+#        - 192.18.1.4:6382
 #      max-redirects: 3 # 获取失败 最大重定向次数
     lettuce:
       pool:
