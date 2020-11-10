@@ -95,6 +95,8 @@ public class IWebOrderServiceImpl implements IWebOrderService {
 				.orderStatus(OrderStatusEnum.WAIT_PAY.getStatus())
 				.operateMan(OrderOperateManEnum.USER.getOperateMan())
 				.build());
+
+//		todo sms 通知用户下单成功
 //商品库存，释放分布式锁
 	}
 

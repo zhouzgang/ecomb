@@ -14,6 +14,7 @@
         <module>ecomb-provider</module>
         <module>ecomb-common</module>
         <module>ecomb-park</module>
+        <module>ecomb-app</module>
     </modules>
 
     <parent>

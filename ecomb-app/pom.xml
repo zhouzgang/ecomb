@@ -9,16 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ecomb-common</artifactId>
+    <artifactId>ecomb-app</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>ecomb-common-web</module>
-        <module>ecomb-common-datas</module>
-        <module>ecomb-common-provider</module>
-        <module>ecomb-common-utils</module>
-        <module>ecomb-common-provider-api</module>
-        <module>ecomb-common-component</module>
-        <module>ecomb-common-rabbitmq</module>
+        <module>ecomb-app-advice</module>
     </modules>
 
 
