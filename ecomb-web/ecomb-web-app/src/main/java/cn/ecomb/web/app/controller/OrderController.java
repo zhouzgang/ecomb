@@ -5,13 +5,11 @@ import cn.ecomb.web.app.controller.response.GetOrderResponse;
 import cn.ecomb.web.app.controller.response.ListOrderResponse;
 import cn.ecomb.web.app.controller.response.QueryOrderResponse;
 import cn.ecomb.web.app.service.IWebOrderService;
+import cn.ecomb.web.app.service.impl.RabbitMQSend;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *
@@ -26,10 +24,14 @@ public class OrderController {
 	@Autowired
 	private IWebOrderService webOrderService;
 
+	@Autowired
+	private RabbitMQSend rabbitMQSend;
+
 	@PostMapping("/create")
 	@ApiOperation(value = "创建订单", notes = "前端下单创建一个「待支付」的订单")
 	public void createOrder(CreateOrderRequest request) {
-		webOrderService.createOrder(request);
+		rabbitMQSend.send();
+//		webOrderService.createOrder(request);
 	}
 
 	@PostMapping("/pay")

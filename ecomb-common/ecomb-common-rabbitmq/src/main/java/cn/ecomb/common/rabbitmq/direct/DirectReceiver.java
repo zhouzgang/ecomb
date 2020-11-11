@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
  * @author brian.zhou
  * @date 2020/11/10
  */
-@Component
-@RabbitListener(queues = "direct")
+//@Component
+//@RabbitListener(queues = "hello")
 public class DirectReceiver {
 
 	@RabbitHandler

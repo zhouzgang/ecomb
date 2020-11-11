@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @author brian.zhou
  * @date 2020/10/26
  */
-@Component
+//@Component
 public class RedissonLockImpl implements IRedissionLock {
 	@Autowired
 	private RedissonClient redissonClient;

@@ -63,7 +63,8 @@ glall:
 ## 使用自定义命令
 ```shell script
 # 加入到 .zshrc 或者 .bash_profile
-alias gpall="find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull"
+echo 'alias gpall="find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull"' >> ~/.bash_profile
+source ~/.bash_profile
 ```
 
 ### 问题笔记

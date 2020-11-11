@@ -37,9 +37,15 @@ spring:
         min-idle: 20
         max-wait: 10000
     timeout: 5000
-    sentinel:
-      master:
-      nodes:
+#   哨兵模式配置
+#    sentinel:
+#      master: redis-master
+#      nodes: 127.0.0.1:26379,127.0.0.1:26380,127.0.0.1:26381
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 
 mybatis:
 #  type-aliases-package: cn.ecomb.provider.**.mapper
@@ -51,6 +57,7 @@ mybatis:
 
 redisson:
   address: redis://${spring.redis.host}:${spring.redis.port}  # redis地址
+#  sentinel-addresses: 127.0.0.1:26379,127.0.0.1:26380,127.0.0.1:26381  # 哨兵模式配置
   timeout: 3000 # 超时时间
   connectionPoolSize: 64  # 连接池大小 默认64
   connectionMinimumIdleSize: 32 # 最小空闲连接数 默认32

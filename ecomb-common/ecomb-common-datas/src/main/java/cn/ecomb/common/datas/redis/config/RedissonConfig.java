@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * @author brian.zhou
  * @date 2020/10/26
  */
-@Configuration
+//@Configuration
 public class RedissonConfig {
 
 	@Value("${redisson.address}")
