@@ -2,6 +2,8 @@ package cn.ecomb.web.app.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessagePostProcessor;
+import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +17,15 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class RabbitMQSend implements RabbitTemplate.ReturnCallback, RabbitTemplate.ConfirmCallback{
 
+	private final static MessagePostProcessor messagePostProcessor = message -> {
+		message.getMessageProperties().setContentType("application/json");
+//		message.getMessageProperties().setContentType("text/plain");
+		message.getMessageProperties().setContentEncoding("UTF-8");
+		return message;
+	};
 
-	@Autowired
+
+		@Autowired
 	private RabbitTemplate rabbitTemplate;
 
 	public void send() {
@@ -33,9 +42,10 @@ public class RabbitMQSend implements RabbitTemplate.ReturnCallback, RabbitTempla
 			}
 		});
 
-		for (int i = 0; i < 1000; i++) {
-			log.info("HelloSender 发送的消息内容：{}", i);
-			rabbitTemplate.convertAndSend("test_topic", "test_route_key", "test_" + i);
+		for (int i = 0; i < 10; i++) {
+			String message = "{\"name\":\"test_" + i + "\"}";
+			log.info("HelloSender 发送的消息内容：{}", message);
+			rabbitTemplate.convertAndSend("test_topic", "test_route_key", message, messagePostProcessor);
 //			rabbitTemplate.convertAndSend("hello", "context" + i);
 		}
 	}
