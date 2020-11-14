@@ -68,46 +68,11 @@
 
 
     <!-- 定义本地环境日志级别 -->
-    <springProfile name="dev">
-        <logger name="cn.ecomb" level="DEBUG"/>
-        <root>
-            <level value="DEBUG" />
-            <appender-ref ref="STDOUT" />
-            <appender-ref ref="ASYNC_INFO" />
-            <appender-ref ref="ERROR_FILE" />
-        </root>
-    </springProfile>
-
-    <springProfile name="bist">
-        <logger name="cn.ecomb" level="DEBUG"/>
-        <root>
-            <level value="INFO" />
-            <appender-ref ref="STDOUT" />
-            <appender-ref ref="ASYNC_INFO" />
-            <appender-ref ref="ERROR_FILE" />
-        </root>
-    </springProfile>
-
-    <!-- 定义测试环境日志级别 -->
-    <springProfile name="test">
-        <logger name="cn.ecomb" level="DEBUG"/>
-        <root>
-            <level value="INFO" />
-            <appender-ref ref="STDOUT" />
-            <appender-ref ref="ASYNC_INFO" />
-            <appender-ref ref="ERROR_FILE" />
-        </root>
-    </springProfile>
-
-    <!-- 定义生产环境日志级别 -->
-    <springProfile name="prod">
-        <logger name="cn.ecomb" level="DEBUG"/>
-        <root>
-            <level value="INFO" />
-            <appender-ref ref="STDOUT" />
-            <appender-ref ref="ASYNC_INFO" />
-            <appender-ref ref="ERROR_FILE" />
-        </root>
-    </springProfile>
+    <root>
+        <level value="INFO" />
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="ASYNC_INFO" />
+        <appender-ref ref="ERROR_FILE" />
+    </root>
 
 </configuration>

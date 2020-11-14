@@ -1,4 +1,4 @@
-package cn.ecomb.park;
+package cn.ecomb.park.common;
 
 /**
  * @author brian.zhou

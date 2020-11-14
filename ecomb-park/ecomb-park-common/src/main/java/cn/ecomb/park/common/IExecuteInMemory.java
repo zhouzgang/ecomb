@@ -1,4 +1,4 @@
-package cn.ecomb.park;
+package cn.ecomb.park.common;
 
 /**
  * i=1 在内存的执行过程

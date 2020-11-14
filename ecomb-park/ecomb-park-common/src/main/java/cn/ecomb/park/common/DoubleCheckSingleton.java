@@ -1,4 +1,4 @@
-package cn.ecomb.park;
+package cn.ecomb.park.common;
 
 /**
  * 测试双重检验锁单例，如果不加 volatile 会不安全吗？singleton = new Singleton();
