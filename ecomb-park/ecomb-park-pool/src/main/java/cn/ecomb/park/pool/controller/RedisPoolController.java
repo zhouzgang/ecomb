@@ -30,7 +30,7 @@ public class RedisPoolController {
 		String key = String.format(PoolConstant.REDIS_TEST_POOL_KEY, new Random().nextInt(100000));
 		log.info("set pool key：{}, value: {}", key, threadName);
 		redisHandle.set(key, threadName, 5000);
-		Thread.sleep(30);
+//		Thread.sleep(30);
 		String redisStr = (String) redisHandle.get(key);
 		log.info("get pool value: {}", redisStr);
 		return redisStr;

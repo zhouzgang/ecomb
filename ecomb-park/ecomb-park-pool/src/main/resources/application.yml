@@ -40,9 +40,9 @@ spring:
     #      max-redirects: 3 # 获取失败 最大重定向次数
     lettuce:
       pool:
-        max-active: 500
-        max-idle: 100
-        min-idle: 20
+        max-active: 500 # 最大连接数， 默认为 8
+        max-idle: 100  # 最大空闲， 默认为8
+        min-idle: 20  # 最少空闲
         max-wait: 10000
     timeout: 5000
     #   哨兵模式配置
@@ -53,10 +53,10 @@ server:
   port: 8070
   tomcat:
     accept-count: 100
-    #最大连接数
-    max-connections: 100
     #最大线程数
-    max-threads: 400
+    max-threads: 600
+    #最大连接数
+    max-connections: 1600
     #编码方式
     uri-encoding: UTF-8
     #post提交数据最大大小，设置为0不限制
