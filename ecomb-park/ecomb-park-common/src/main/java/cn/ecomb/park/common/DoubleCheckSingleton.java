@@ -34,8 +34,9 @@ public class DoubleCheckSingleton {
 	private volatile static DoubleCheckSingleton singleton;
 
 	/**
-	 * 同步锁外判断，为避免在实例已经创建的情况下每次获取实例都加锁取，影响性能；
-	 * 锁内判断，考虑多线程情况下，两个以上线程都已经运行至同步锁处，也就是都已经判断变量为空，如锁内不再次判断，会导致实例重复创建。
+	 * 1. 同步锁外判断，为避免在实例已经创建的情况下每次获取实例都加锁取，影响性能；
+	 * 2. 锁内判断，考虑多线程情况下，两个以上线程都已经运行至同步锁处，也就是都已经判断变量为空，如锁内不再次判断，会导致实例重复创建。
+	 * 3. 这里选择自旋锁会怎么样？
 	 * @return
 	 */
 	public static DoubleCheckSingleton singleton() {
