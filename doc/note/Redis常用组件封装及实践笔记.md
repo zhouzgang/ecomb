@@ -18,5 +18,5 @@
 - Redis 事件原理，线程模型
 
 ### 文档
-- (redisson)[https://github.com/redisson/redisson/wiki/%E7%9B%AE%E5%BD%95]
-- (redis)[http://redis.cn/topics/sentinel.html]
+- [redisson](https://github.com/redisson/redisson/wiki/%E7%9B%AE%E5%BD%95)
+- [redis](http://redis.cn/topics/sentinel.html)

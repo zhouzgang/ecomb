@@ -3,9 +3,9 @@
 
 
 ### 笔记
-- 看一下 cola 的(结构图)[/images/cola项目结构图.jpg]，其实和现在项目中做的是一样的。
+- 看一下 cola 的[结构图](/images/cola项目结构图.jpg)，其实和现在项目中做的是一样的。
 
 
 ### 参考地址
-- (应用架构 COLA 2.0)[https://toutiao.io/posts/9b2wg1d/preview]
-- (COLA Git)[https://github.com/alibaba/COLA]
+- [应用架构 COLA 2.0](https://toutiao.io/posts/9b2wg1d/preview)
+- [COLA Git](https://github.com/alibaba/COLA)

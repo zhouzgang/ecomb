@@ -81,7 +81,7 @@
 - 表记录关联应该使用主键索引，还是非主键索引。比如 product 表的 id 与 product_id。
 
 ### git commit message 使用规范
-> 参考(阮一峰Commit message 和 Change log 编写指南)[http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html]
+> 参考[阮一峰Commit message 和 Change log 编写指南](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
 - message格式：\<type>(\<scope>): \<subject> 其中，Header 是必需的，Body 和 Footer 可以省略。
 - （1）type用于说明 commit 的类别，只允许使用下面7个标识。
   - feature：新功能（feature）

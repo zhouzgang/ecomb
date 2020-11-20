@@ -24,4 +24,4 @@ docker run -d -p 5672:5672 -p 15672:15672 --name myrabbitmq IMAGE_ID
 
 
 **参考网址**
-- (这也许是最全面透彻的一篇RabbitMQ指南)[https://dbaplus.cn/news-141-1464-1.html]
+- [这也许是最全面透彻的一篇RabbitMQ指南](https://dbaplus.cn/news-141-1464-1.html)
