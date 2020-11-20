@@ -37,3 +37,11 @@ activate B
 B-->>A: 下单成功
 deactivate B
 ```
+
+```graph LR
+    A-. text .-> B
+```
+```
+graph TD
+    Start --> Stop
+```
