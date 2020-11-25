@@ -65,7 +65,7 @@ redisson:
 
 ## Swagger
 swagger:
-  host:
+  host: 8060
   title: ecomb 接口文档
   description: ecomb 接口文档
   disabled: false # 是否禁用swagger

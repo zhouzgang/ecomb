@@ -20,7 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-@Profile({"dev","test"})
+@Profile({"dev", "bist", "test"})
 public class SwaggerConfig {
 
     @Value("${swagger.host}")

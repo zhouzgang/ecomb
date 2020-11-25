@@ -1,0 +1,1 @@
+-- 可用数据 https://github.com/newbee-ltd/newbee-mall/blob/master/src/main/resources/newbee_mall_schema.sql

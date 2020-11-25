@@ -9,7 +9,7 @@ import lombok.Data;
 public class GetUserResponse {
 
     @ApiModelProperty("用户ID")
-    private Integer userId;
+    private Long userId;
     @ApiModelProperty("用户名字")
     private String userName;
 

@@ -1,7 +1,9 @@
 package cn.ecomb.web.app.service.impl;
 
 import cn.ecomb.common.utils.util.BeanHandleUtil;
+import cn.ecomb.provider.api.product.entity.Product;
 import cn.ecomb.provider.api.product.service.IProductServiceApi;
+import cn.ecomb.web.app.controller.request.AddProductRequest;
 import cn.ecomb.web.app.controller.request.GetProductRequest;
 import cn.ecomb.web.app.controller.request.ListProductRequest;
 import cn.ecomb.web.app.controller.request.QueryProductRequest;
@@ -26,6 +28,12 @@ public class IWebProductServiceImpl implements IWebProductService {
 
 	@Autowired
 	IProductServiceApi productServiceApi;
+
+	@Override
+	public void addProduct(AddProductRequest request) {
+		Product product = BeanHandleUtil.copyProperties(request, Product.class);
+		productServiceApi.addProduct(product);
+	}
 
 	@Override
 	public GetProductResponse getProduct(GetProductRequest request) {

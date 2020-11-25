@@ -1,5 +1,6 @@
 package cn.ecomb.web.app.service;
 
+import cn.ecomb.web.app.controller.request.AddProductRequest;
 import cn.ecomb.web.app.controller.request.GetProductRequest;
 import cn.ecomb.web.app.controller.request.ListProductRequest;
 import cn.ecomb.web.app.controller.request.QueryProductRequest;
@@ -14,6 +15,12 @@ import cn.ecomb.web.app.controller.response.QueryProductResponse;
  * @date 2020/9/18
  */
 public interface IWebProductService {
+
+	/**
+	 * 添加商品
+	 * @param request
+	 */
+	void addProduct(AddProductRequest request);
 
 	/**
 	 * 获取商品信息
