@@ -32,6 +32,8 @@ public class IWebProductServiceImpl implements IWebProductService {
 	@Override
 	public void addProduct(AddProductRequest request) {
 		Product product = BeanHandleUtil.copyProperties(request, Product.class);
+		product.setProductId("001");
+		product.setDelete_status(0);
 		productServiceApi.addProduct(product);
 	}
 

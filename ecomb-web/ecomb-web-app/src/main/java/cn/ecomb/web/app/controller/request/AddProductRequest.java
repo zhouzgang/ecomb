@@ -12,8 +12,6 @@ import lombok.Data;
 @ApiModel("添加商品接口参数")
 public class AddProductRequest {
 
-	@ApiModelProperty("商品编号")
-	private String productId;
 	@ApiModelProperty("商品名称")
 	private String name;
 	@ApiModelProperty("副标题")
@@ -28,10 +26,6 @@ public class AddProductRequest {
 	private String unit;
 	@ApiModelProperty("商品重量，默认为克")
 	private Float weight;
-	@ApiModelProperty("销量")
-	private Integer sale;
-	@ApiModelProperty("删除状态：0->未删除；1->已删除")
-	private Integer delete_status;
 	@ApiModelProperty("上架状态：0->下架；1->上架")
 	private Integer publish_status;
 	

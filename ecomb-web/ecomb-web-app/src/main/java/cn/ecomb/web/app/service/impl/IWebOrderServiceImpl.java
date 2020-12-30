@@ -21,10 +21,12 @@ import cn.ecomb.web.app.controller.request.*;
 import cn.ecomb.web.app.controller.response.GetOrderResponse;
 import cn.ecomb.web.app.controller.response.ListOrderResponse;
 import cn.ecomb.web.app.controller.response.QueryOrderResponse;
+import cn.ecomb.web.app.listener.event.CreateOrderEvent;
 import cn.ecomb.web.app.service.IWebOrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -44,6 +46,9 @@ import static cn.ecomb.provider.api.order.constant.OrderErrorCode.PRODUCT_NOT_EX
 @Service
 @Slf4j
 public class IWebOrderServiceImpl implements IWebOrderService {
+
+	@Autowired
+	private ApplicationContext applicationContext;
 
 	@Autowired
 	private IOrderServiceApi orderServiceApi;
@@ -74,6 +79,7 @@ public class IWebOrderServiceImpl implements IWebOrderService {
 						.mapToDouble(orderItem -> orderItem.getProductSellingPrice() * orderItem.getProductQuantity())
 						.sum())
 				.status(OrderStatusEnum.WAIT_PAY.getStatus())
+				.deleteStatus(0)
 				.build();
 		orderServiceApi.addOrder(order);
 
@@ -98,6 +104,7 @@ public class IWebOrderServiceImpl implements IWebOrderService {
 				.build());
 
 //		todo sms 通知用户下单成功
+		applicationContext.publishEvent(new CreateOrderEvent(new Object()));
 //商品库存，释放分布式锁
 	}
 

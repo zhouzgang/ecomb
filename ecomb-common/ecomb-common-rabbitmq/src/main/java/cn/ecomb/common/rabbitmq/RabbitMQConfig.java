@@ -10,6 +10,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -18,6 +19,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -25,9 +28,6 @@ import java.util.Objects;
  * @date 2020/11/10
  */
 @Configuration
-//@PropertySource(value = {"classpath:rabbitmq.yml"})
-//@ConfigurationProperties(prefix = "rabbitmq")
-//@Data
 public class RabbitMQConfig {
 
 	@Autowired
@@ -84,5 +84,24 @@ public class RabbitMQConfig {
 	@Bean
 	public Binding binding() {
 		return BindingBuilder.bind(queue()).to(exchange()).with("test_route_key");
+	}
+
+	@Bean
+	public Queue immediateQueue() {
+		return new Queue(QueueEnum.QUEUE_DELAY.getQueue());
+	}
+
+	@Bean
+	public CustomExchange customExchange() {
+		Map<String, Object> args = new HashMap<>();
+		args.put("x-delayed-type", "direct");
+		return new CustomExchange(QueueEnum.QUEUE_DELAY.getExchange(), "x-delayed-message",
+				true, false, args);
+	}
+
+	@Bean
+	public Binding bindingNotify(@Qualifier("immediateQueue") Queue queue,
+	                             @Qualifier("customExchange") CustomExchange customExchange) {
+		return BindingBuilder.bind(queue).to(customExchange).with(QueueEnum.QUEUE_DELAY.getRoutingKey()).noargs();
 	}
 }

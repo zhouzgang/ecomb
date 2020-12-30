@@ -29,7 +29,7 @@ public class OrderController {
 
 	@PostMapping("/create")
 	@ApiOperation(value = "创建订单", notes = "前端下单创建一个「待支付」的订单")
-	public void createOrder(CreateOrderRequest request) {
+	public void createOrder(@RequestBody CreateOrderRequest request) {
 //		rabbitMQSend.send();
 		webOrderService.createOrder(request);
 	}

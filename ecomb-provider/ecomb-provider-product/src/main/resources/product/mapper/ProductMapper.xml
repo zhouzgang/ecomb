@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ecomb.provider.product.mapper.IProductMapper">
+
+  <insert id="addProduct">
+    insert into tbl_product(product_id, name, sub_title, description, original_price, stock, unit, weight, sale, delete_status, publish_status)
+     values (#{product.productId}, #{product.name}, #{product.subTitle}, #{product.description}, #{product.originalPrice}, #{product.stock}, #{product.unit}, #{product.weight}, #{product.sale}, #{product.deleteStatus}, #{product.publishStatus})
+  </insert>
+
+  <update id="updateProduct" parameterType="cn.ecomb.provider.api.product.entity.Product">
+    update tbl_product set name = #{product.name}, sub_title = #{product.subTitle}, description = #{product.description}, original_price = #{product.originalPrice},
+    stock = #{product.stock}, unit = #{product.unit}, weight = #{product.weight}, sale = #{product.sale}, publish_status = #{product.publishStatus}
+    where product_id = #{product.productId}
+  </update>
+
+  <update id="updateStock" parameterType="cn.ecomb.provider.api.product.entity.Product">
+    update tbl_product set stock = #{product.stock} where product_id = #{product.productId}
+  </update>
+
+  <update id="remove">
+    update tbl_product set delete_status = 1 where product_id in
+    <foreach collection="ids" separator="," open="(" close=")" index="index" item="item">
+      #{item}
+    </foreach>
+  </update>
+
+  <select id="getProduct" resultType="cn.ecomb.provider.api.product.entity.Product">
+    select * from tbl_product where product_id = #{productId}
+  </select>
+
+  <select id="listProductByIds" resultType="cn.ecomb.provider.api.product.entity.Product">
+    select * from tbl_product where product_id in
+      <foreach collection="list" separator="," open="(" close=")" index="index" item="item">
+        #{item}
+      </foreach>
+  </select>
+
+  <select id="listProduct" resultType="cn.ecomb.provider.api.product.dto.ProductDto">
+    select * from tbl_product where name = #{pageQuery.name}
+    limit #{pageQuery.pageSize} offset #{pageQuery.offset}
+  </select>
+
+
+</mapper>

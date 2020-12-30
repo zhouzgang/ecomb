@@ -1,0 +1,31 @@
+POST http://127.0.0.1:8080/user
+Content-Type: application/json
+
+### 获取用户
+GET http://127.0.0.1:8080/user?userId=1001
+Content-Type: application/json
+
+### 获取商品
+GET http://127.0.0.1:8080/product/?productId=10169
+Content-Type: application/json
+
+### 批量获取商品
+GET http://127.0.0.1:8080/product/list/?productIds=10169,10171
+Content-Type: application/json
+
+### 下单
+POST http://127.0.0.1:8080/order/create
+Content-Type: application/json
+
+{
+  "userId": 1001,
+  "sourceType": 1,
+  "orderType": 0,
+  "orderItems": [{
+    "productId": "10169",
+    "productPrice": "229.0",
+    "productName": "索尼",
+    "productSellingPrice": 120.0,
+    "productQuantity": 1
+  }]
+}

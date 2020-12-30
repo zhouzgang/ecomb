@@ -29,12 +29,13 @@ CREATE TABLE `tbl_product` (
   `sale` int(11) DEFAULT NULL COMMENT '销量',
   `delete_status` int(1) DEFAULT NULL COMMENT '删除状态：0->未删除；1->已删除',
   `publish_status` int(1) DEFAULT NULL COMMENT '上架状态：0->下架；1->上架',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_product_id` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `tbl_order`;
 CREATE TABLE `tbl_order` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL UNSIGNED AUTO_INCREMENT,
   `user_id` bigint(20) NOT NULL,
   `order_id` bigint(64) DEFAULT NULL COMMENT '订单编号',
   `create_time` datetime DEFAULT NULL COMMENT '提交时间',
@@ -47,7 +48,7 @@ CREATE TABLE `tbl_order` (
   `status` int(1) DEFAULT NULL COMMENT '订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单',
   `order_type` int(1) DEFAULT NULL COMMENT '订单类型：0->正常订单；1->秒杀订单',
   `delivery_company` varchar(64) DEFAULT NULL COMMENT '物流公司(配送方式)',
-  `delivery_sn` varchar(64) DEFAULT NULL COMMENT '物流单号',
+  `delivery_id` varchar(64) DEFAULT NULL COMMENT '物流单号',
   `confirm_status` int(1) DEFAULT NULL COMMENT '确认收货状态：0->未确认；1->已确认',
   `delete_status` int(1) NOT NULL DEFAULT '0' COMMENT '删除状态：0->未删除；1->已删除',
   `payment_time` datetime DEFAULT NULL COMMENT '支付时间',

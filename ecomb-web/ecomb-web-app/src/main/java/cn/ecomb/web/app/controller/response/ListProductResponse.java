@@ -13,8 +13,9 @@ public class ListProductResponse {
     @ApiModelProperty("商品列表")
     private List<Product> list;
 
+    @Data
     @ApiModel("商品信息")
-    public class Product {
+    public static class Product {
         @ApiModelProperty("商品编号")
         private String productId;
         @ApiModelProperty("商品名称")

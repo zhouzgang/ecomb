@@ -1,6 +1,5 @@
 package cn.ecomb.common.rabbitmq.producer;
 
-import cn.ecomb.common.rabbitmq.RabbitMQConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;

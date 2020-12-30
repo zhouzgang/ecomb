@@ -31,7 +31,7 @@ public class CreateOrderRequest {
 
 	@Data
 	@ApiModel("订单明细")
-	public class OrderItem {
+	public static class OrderItem {
 
 		@ApiModelProperty("商品Id")
 		private String productId;

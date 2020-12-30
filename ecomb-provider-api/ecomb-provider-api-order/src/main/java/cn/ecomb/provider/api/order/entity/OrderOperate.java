@@ -2,6 +2,7 @@ package cn.ecomb.provider.api.order.entity;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.Tolerate;
 
 import java.util.Date;
 
@@ -27,4 +28,7 @@ public class OrderOperate {
 	/** 备注 */
 	private String note;
 
+	@Tolerate
+	public OrderOperate() {
+	}
 }

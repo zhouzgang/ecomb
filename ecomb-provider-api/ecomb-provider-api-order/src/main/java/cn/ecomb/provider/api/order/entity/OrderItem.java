@@ -2,6 +2,7 @@ package cn.ecomb.provider.api.order.entity;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.Tolerate;
 
 /**
  * 订单明细项实体
@@ -39,4 +40,7 @@ public class OrderItem {
 	/** 删除状态：0->未删除；1->已删除 */
 	private Integer deleteStatus;
 
+	@Tolerate
+	public OrderItem() {
+	}
 }

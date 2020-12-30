@@ -2,6 +2,7 @@ package cn.ecomb.provider.api.product.entity;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.Tolerate;
 import org.omg.PortableInterceptor.INACTIVE;
 
 /**
@@ -38,4 +39,7 @@ public class Product {
 	/** 上架状态：0->下架；1->上架 */
 	private Integer publish_status;
 
+	@Tolerate
+	public Product() {
+	}
 }
