@@ -2,6 +2,7 @@ package cn.ecomb.provider.api.order.entity;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.Tolerate;
 
 import java.util.Date;
 
@@ -83,4 +84,7 @@ public class Order {
 		}
 	}
 
+	@Tolerate
+	public Order() {
+	}
 }

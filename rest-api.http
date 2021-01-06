@@ -29,3 +29,24 @@ Content-Type: application/json
     "productQuantity": 1
   }]
 }
+
+### 订单支付
+POST http://127.0.0.1:8080/order/pay
+Content-Type: application/json
+
+{
+  "orderId": "1344488046038114304"
+}
+
+
+### 订单发货
+POST http://127.0.0.1:8080/order/delivery
+Content-Type: application/json
+
+{
+  "orderId": "1344488046038114304",
+  "freightAmount": 10,
+  "deliveryCompany": "ZhongTong",
+  "deliveryId": "12312",
+  "deliveryTime": "2020-12-31"
+}

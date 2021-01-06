@@ -36,37 +36,37 @@ public class OrderController {
 
 	@PostMapping("/pay")
 	@ApiOperation(value = "订单支付", notes = "为「待支付」订单，提供支付功能")
-	public void payOrder(PayOrderRequest request) {
+	public void payOrder(@RequestBody PayOrderRequest request) {
 		webOrderService.payOrder(request);
 	}
 
 	@PostMapping("/update")
 	@ApiOperation(value = "更新订单信息", notes = "更新订单基础信息")
-	public void updateOrder(UpdateOrderRequest request) {
+	public void updateOrder(@RequestBody UpdateOrderRequest request) {
 		webOrderService.updateOrder(request);
 	}
 
 	@PostMapping("/delivery")
 	@ApiOperation(value = "订单发货", notes = "订单支付后，更新发货信息")
-	public void deliveryOrder(DeliveryOrderRequest request) {
+	public void deliveryOrder(@RequestBody DeliveryOrderRequest request) {
 		webOrderService.deliveryOrder(request);
 	}
 
 	@PostMapping("/receive")
 	@ApiOperation(value = "订单收货", notes = "订单发货后，更新收货信息")
-	public void receiveOrder(ReceiveOrderRequest request) {
+	public void receiveOrder(@RequestBody ReceiveOrderRequest request) {
 		webOrderService.receiveOrder(request);
 	}
 
 	@PostMapping("/comment")
 	@ApiOperation(value = "订单评论", notes = "订单收货后，更新评论信息")
-	public void commentOrder(CommentOrderRequest request) {
+	public void commentOrder(@RequestBody CommentOrderRequest request) {
 		webOrderService.commentOrder(request);
 	}
 
 	@PostMapping("/delete")
 	@ApiOperation(value = "删除订单", notes = "标记删除订单记录")
-	public void deleteOrder(DeleteOrderRequest request) {
+	public void deleteOrder(@RequestBody DeleteOrderRequest request) {
 		webOrderService.deleteOrder(request);
 	}
 

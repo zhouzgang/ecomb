@@ -14,7 +14,7 @@
   </update>
 
   <update id="updateStock" parameterType="cn.ecomb.provider.api.product.entity.Product">
-    update tbl_product set stock = #{product.stock} where product_id = #{product.productId}
+    update tbl_product set stock = stock - #{product.stock} where product_id = #{product.productId} and stock - #{product.stock} >= 0
   </update>
 
   <update id="remove">

@@ -1,4 +1,4 @@
-package cn.ecomb.provider.api.order.constant;
+package cn.ecomb.provider.product.config;
 
 
 import cn.ecomb.common.provider.api.exception.ErrorResult;
@@ -6,16 +6,15 @@ import cn.ecomb.common.provider.api.exception.ErrorResult;
 import java.util.Objects;
 
 /**
- * 订单相关错误码
+ * 商品相关错误码
  *
  * @author brian.zhou
  * @date 2020/9/22
  */
-public enum OrderErrorCode implements ErrorResult {
+public enum ProductErrorCode implements ErrorResult {
 
-    PAY_ERROR(2, "支付失败"),
-
-    ORDER_EMPTY(252200,"订单不存在"),
+    PRODUCT_NOT_EXIST(2, "商品 %s 不存在"),
+    PRODUCT_STOCK_SHORT(2, "商品 %s 库存不足"),
 
     USER_PHONE_ERROR(252201,"手机号格式错误"),
     PHONE_SEND_MSG_TOO_FAST(252202,"请勿频繁发生短信"),
@@ -30,7 +29,7 @@ public enum OrderErrorCode implements ErrorResult {
     private String msg;
 
 
-    OrderErrorCode(int value, String msg) {
+    ProductErrorCode(int value, String msg) {
         this.code = value;
         this.msg = msg;
     }
@@ -59,7 +58,7 @@ public enum OrderErrorCode implements ErrorResult {
      * @return
      */
     public static ErrorResult parseEnumByCode(int code) {
-        for (OrderErrorCode commonError : OrderErrorCode.values()) {
+        for (ProductErrorCode commonError : ProductErrorCode.values()) {
             if (Objects.equals(commonError.getCode(), code)) {
                 return commonError;
             }

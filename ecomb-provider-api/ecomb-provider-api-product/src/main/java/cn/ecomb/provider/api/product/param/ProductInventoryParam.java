@@ -8,10 +8,10 @@ import lombok.Data;
  * @date 2020/10/10
  */
 @Data
-public class ProductStockParam {
+public class ProductInventoryParam {
 
 	/** 商品编号 */
 	private String productId;
-	/** 库存 */
-	private Integer stock;
+	/** 数量 */
+	private Integer num;
 }

@@ -3,7 +3,7 @@ package cn.ecomb.provider.api.product.service;
 import cn.ecomb.provider.api.product.dto.ProductDto;
 import cn.ecomb.provider.api.product.entity.Product;
 import cn.ecomb.provider.api.product.param.ProductPageQuery;
-import cn.ecomb.provider.api.product.param.ProductStockParam;
+import cn.ecomb.provider.api.product.param.ProductInventoryParam;
 
 import java.util.List;
 import java.util.Map;
@@ -63,11 +63,18 @@ public interface IProductServiceApi {
 	 * 检查商品库存是否满足条件
 	 * @param stockParams   需要检查的商品库存数
 	 */
-	void checkStock(List<ProductStockParam> stockParams);
+	void checkStock(List<ProductInventoryParam> stockParams);
 
 	/**
 	 * 减少库存，减少参数中商品的库存数
 	 * @param stockParams   需要减少的商品和库存数
 	 */
-	void reduceStock(List<ProductStockParam> stockParams);
+	void reduceInventory(List<ProductInventoryParam> stockParams);
+
+	/**
+	 * 减少库存，减少参数中商品的库存数
+	 * 在 乐观锁前面加上分布式锁，这个方案目前还有不少问题，但是先实习来看看
+	 * @param inventoryParams
+	 */
+	void reduceInventoryWithLock(List<ProductInventoryParam> inventoryParams);
 }

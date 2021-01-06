@@ -33,7 +33,7 @@ public interface IProductMapper {
 	 * 更新库存
 	 * @param product
 	 */
-	void updateStock(@Param("product") Product product);
+	int updateStock(@Param("product") Product product);
 
 	/**
 	 * 删除商品信息

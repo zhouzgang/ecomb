@@ -76,33 +76,33 @@ public class ValidationUtil {
     }
 
 
-    public static void isTrueThrow(boolean expression, String message) {
-        isTrueThrow(expression, 1002, message);
+    public static void ifTrueThrow(boolean expression, String message) {
+        ifTrueThrow(expression, 1002, message);
     }
 
-    public static void isTrueThrow(boolean expression, ErrorResult errorResult) {
+    public static void ifTrueThrow(boolean expression, ErrorResult errorResult) {
         if (expression) {
             throw new ValidationException(errorResult);
         }
     }
 
 
-    public static void isTrueThrow(boolean expression, Integer code, String message) {
+    public static void ifTrueThrow(boolean expression, Integer code, String message) {
         if (expression) {
             throw new ValidationException(code, message);
         }
     }
 
-    public static void isFalseThrow(boolean expression, String message) {
-        isFalseThrow(!expression, 1002, message);
+    public static void ifFalseThrow(boolean expression, String message) {
+        ifFalseThrow(!expression, 1002, message);
     }
 
-    public static void isFalseThrow(boolean expression, ErrorResult errorResult) {
-        isFalseThrow(expression, errorResult.getCode(), errorResult.getMsg());
+    public static void ifFalseThrow(boolean expression, ErrorResult errorResult) {
+        ifFalseThrow(expression, errorResult.getCode(), errorResult.getMsg());
     }
 
-    public static void isFalseThrow(boolean expression, Integer code, String message) {
-        isTrueThrow(!expression, code, message);
+    public static void ifFalseThrow(boolean expression, Integer code, String message) {
+        ifTrueThrow(!expression, code, message);
     }
 
     public static void isInvalid(boolean expression, String message) {

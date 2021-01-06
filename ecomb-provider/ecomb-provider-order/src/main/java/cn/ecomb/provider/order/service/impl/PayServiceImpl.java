@@ -1,14 +1,11 @@
 package cn.ecomb.provider.order.service.impl;
 
 import cn.ecomb.common.provider.api.exception.ServiceException;
+import cn.ecomb.common.provider.api.utils.ValidationUtil;
 import cn.ecomb.common.provider.sao.pay.PaySao;
 import cn.ecomb.common.provider.sao.pay.request.PayRequest;
 import cn.ecomb.common.provider.sao.pay.response.PayResponse;
-import cn.ecomb.provider.api.order.constant.OrderErrorCode;
 import cn.ecomb.provider.api.order.entity.Order;
-import cn.ecomb.provider.api.order.entity.OrderOperate;
-import cn.ecomb.provider.api.order.entity.type.OrderOperateManEnum;
-import cn.ecomb.provider.api.order.entity.type.OrderStatusEnum;
 import cn.ecomb.provider.api.order.param.PayParam;
 import cn.ecomb.provider.api.order.service.IOrderOperateServiceApi;
 import cn.ecomb.provider.api.order.service.IOrderServiceApi;
@@ -17,9 +14,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.Optional;
 
+import static cn.ecomb.provider.api.order.constant.OrderErrorCode.PAY_ERROR;
 import static cn.ecomb.provider.api.order.entity.type.OrderOperateManEnum.USER;
 import static cn.ecomb.provider.api.order.entity.type.OrderStatusEnum.WAIT_DELIVERY;
 
@@ -46,8 +43,10 @@ public class PayServiceImpl implements IPayServiceApi {
 				.userId(param.getUserId())
 				.payAmount(param.getPayAmount()).build());
 		Optional.ofNullable(payResponse)
-				.orElseThrow(new ServiceException(OrderErrorCode.PAY_ERROR));
+				.orElseThrow(new ServiceException(PAY_ERROR));
+		ValidationUtil.ifFalseThrow(payResponse.getPayStatus(), PAY_ERROR);
 
+		// 这里的状态更新操作需要一个乐观锁吗
 		orderServiceApi.updateStatus(Order.builder()
 				.orderId(param.getOrderId())
 				.status(WAIT_DELIVERY.getStatus()).build());

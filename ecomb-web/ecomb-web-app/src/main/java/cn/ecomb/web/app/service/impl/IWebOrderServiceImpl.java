@@ -1,6 +1,7 @@
 package cn.ecomb.web.app.service.impl;
 
 import cn.ecomb.common.provider.api.exception.ServiceException;
+import cn.ecomb.common.provider.api.utils.ValidationUtil;
 import cn.ecomb.common.utils.idgenerator.IdWorker;
 import cn.ecomb.common.utils.util.BeanHandleUtil;
 import cn.ecomb.provider.api.order.dto.OrderDto;
@@ -15,7 +16,7 @@ import cn.ecomb.provider.api.order.service.IOrderOperateServiceApi;
 import cn.ecomb.provider.api.order.service.IOrderServiceApi;
 import cn.ecomb.provider.api.order.service.IPayServiceApi;
 import cn.ecomb.provider.api.product.entity.Product;
-import cn.ecomb.provider.api.product.param.ProductStockParam;
+import cn.ecomb.provider.api.product.param.ProductInventoryParam;
 import cn.ecomb.provider.api.product.service.IProductServiceApi;
 import cn.ecomb.web.app.controller.request.*;
 import cn.ecomb.web.app.controller.response.GetOrderResponse;
@@ -24,20 +25,19 @@ import cn.ecomb.web.app.controller.response.QueryOrderResponse;
 import cn.ecomb.web.app.listener.event.CreateOrderEvent;
 import cn.ecomb.web.app.service.IWebOrderService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static cn.ecomb.common.provider.api.exception.CommonErrorCode.NO_RESOURCES;
-import static cn.ecomb.provider.api.order.constant.OrderErrorCode.PRODUCT_NOT_EXIST;
+import static cn.ecomb.provider.api.order.constant.OrderErrorCode.ORDER_EMPTY;
+import static cn.ecomb.provider.product.config.ProductErrorCode.PRODUCT_NOT_EXIST;
 
 /**
  * @author brian.zhou
@@ -66,6 +66,7 @@ public class IWebOrderServiceImpl implements IWebOrderService {
 	private IProductServiceApi productServiceApi;
 
 	@Override
+	@Transactional
 	public void createOrder(CreateOrderRequest request) {
 //todo 商品库存加减，加分布式锁或其他方案，防止超卖，（放到 step-1-2 去做）
 		checkStock(request.getOrderItems());
@@ -83,11 +84,11 @@ public class IWebOrderServiceImpl implements IWebOrderService {
 				.build();
 		orderServiceApi.addOrder(order);
 
-		productServiceApi.reduceStock(request.getOrderItems().stream()
+		productServiceApi.reduceInventory(request.getOrderItems().stream()
 				.map(orderItem -> {
-					ProductStockParam stockParam = new ProductStockParam();
+					ProductInventoryParam stockParam = new ProductInventoryParam();
 					stockParam.setProductId(orderItem.getProductId());
-					stockParam.setStock(orderItem.getProductQuantity());
+					stockParam.setNum(orderItem.getProductQuantity());
 					return stockParam;
 				}).collect(Collectors.toList()));
 
@@ -130,6 +131,7 @@ public class IWebOrderServiceImpl implements IWebOrderService {
 	@Override
 	public void payOrder(PayOrderRequest request) {
 		Order order = orderServiceApi.getOrder(request.getOrderId());
+		ValidationUtil.isNull(order, ORDER_EMPTY);
 		payServiceApi.pay(PayParam.builder()
 				.orderId(request.getOrderId())
 				.payAmount(order.getPayAmount())
