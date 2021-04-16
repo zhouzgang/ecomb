@@ -19,6 +19,7 @@
         <module>ecomb-common-provider-api</module>
         <module>ecomb-common-component</module>
         <module>ecomb-common-rabbitmq</module>
+        <module>ecomb-common-kafka</module>
     </modules>
 
 
