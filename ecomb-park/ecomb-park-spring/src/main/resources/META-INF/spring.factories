@@ -1,0 +1,3 @@
+org.springframework.context.ApplicationContextInitializer=cn.ecomb.park.spring.lifecycle.EcombApplicationContextInitializer
+
+org.springframework.context.ApplicationListener=cn.ecomb.park.spring.lifecycle.EcombApplicationListener
