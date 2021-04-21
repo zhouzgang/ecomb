@@ -1,6 +1,14 @@
 ## SpringBoot 源码阅读笔记
 > 结合项目构建阅读 SpringBoot 源码，去理解源码中的设计和解决的问题
 
+### 理解
+- Spring，一个对象管理容器
+  - bean 管理，整个生命周期处理，各种 BeanPostProcessor
+  - aop，使用的横向处理
+  - event/listener，在主干流程之外，观察到各种事件变化，并做各种监听处理
+  - SPI，扩展各种插件到容器内
+- BeanDefinition/ClassDefinition
+
 ### 生命周期
 - SpringApplication 的生命周期 ![spring的生命周期](./images/springbean的生命周期.jpeg)
 - SpringBean 的生命周期 ![springbean的生命周期](./images/springbean的生命周期.jpeg)
