@@ -1,4 +1,4 @@
-package cn.ecomb.park.spring.spi;
+package cn.ecomb.park.spring;
 
 import cn.ecomb.park.spi.IServiceProvider;
 import org.springframework.boot.SpringApplication;

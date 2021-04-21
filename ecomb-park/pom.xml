@@ -16,7 +16,7 @@
         <module>ecomb-park-pool</module>
         <module>ecomb-park-hello</module>
         <module>ecomb-park-spi</module>
-        <module>ecomb-park-spring-spi</module>
+        <module>ecomb-park-spring</module>
     </modules>
 
 
