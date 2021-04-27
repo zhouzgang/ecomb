@@ -21,15 +21,17 @@ public class WaitSubThread {
 	private static final int SLEEP_TIME = 500;
 
 	public static void main(String[] args) throws InterruptedException {
-		useJoin();
-		System.out.println("-----------------use join");
-		serialMoreJoin();
-		System.out.println("-----------------serial more join");
-		endMoreJoin();
-		System.out.println("-----------------end more join");
-		useCountDownLatch();
-		System.out.println("-----------------use CountDownLatch");
-		useThreadPool();
+//		useJoin();
+//		System.out.println("-----------------use join");
+//		serialMoreJoin();
+//		System.out.println("-----------------serial more join");
+//		endMoreJoin();
+//		System.out.println("-----------------end more join");
+//		useCountDownLatch();
+//		System.out.println("-----------------use CountDownLatch");
+//		useThreadPool();
+//		System.out.println("-----------------use ThreadPool");
+		useCyclicBarrier();
 		System.out.println("-----------------use ThreadPool");
 	}
 
@@ -68,10 +70,30 @@ public class WaitSubThread {
 		}
 	}
 
-	public static void useCyclicBarrier() {
+	public static void useCyclicBarrier() throws InterruptedException {
 		long start = System.currentTimeMillis();
 		CyclicBarrier cyclicBarrier = new CyclicBarrier(THREAD_COUNT);
-
+		for (int i = 0; i < THREAD_COUNT; i++) {
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					System.out.println(Thread.currentThread().getName() + "start");
+					try {
+						Thread.sleep(SLEEP_TIME);
+						cyclicBarrier.await();
+					} catch (InterruptedException | BrokenBarrierException e) {
+						e.printStackTrace();
+					}
+					System.out.println(Thread.currentThread().getName() + "end");
+				}
+			}).start();
+		}
+		try {
+			// todo 这里会一直等待？
+			cyclicBarrier.await(1000, TimeUnit.MILLISECONDS);
+		} catch (BrokenBarrierException | TimeoutException e) {
+			e.printStackTrace();
+		}
 		long end = System.currentTimeMillis();
 		System.out.println("runtime: " + (end - start));
 	}

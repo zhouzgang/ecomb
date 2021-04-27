@@ -30,17 +30,17 @@ public class HelloSender implements RabbitTemplate.ReturnCallback, RabbitTemplat
 		this.rabbitTemplate.setReturnCallback(this);
 		this.rabbitTemplate.setConfirmCallback(this);
 
-		this.rabbitTemplate.setConfirmCallback((correlationData, ack, cause) -> {
-			if (!ack) {
-				logger.info("HelloSender 发送失败：" + cause + correlationData.toString());
-			} else {
-				logger.info("HelloSender 发送成功");
-			}
-		});
+//		this.rabbitTemplate.setConfirmCallback((correlationData, ack, cause) -> {
+//			if (!ack) {
+//				logger.info("HelloSender 发送失败：" + cause + correlationData.toString());
+//			} else {
+//				logger.info("HelloSender 发送成功");
+//			}
+//		});
 
 		logger.info("HelloSender 发送的消息内容：{}", context);
 
-		this.rabbitTemplate.convertAndSend("hello", context);
+		this.rabbitTemplate.convertAndSend("test_topic", "test.route.key", context);
 
 	}
 

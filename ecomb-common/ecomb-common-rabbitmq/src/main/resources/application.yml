@@ -2,5 +2,5 @@ spring:
   rabbitmq:
     host: 127.0.0.1
     port: 5672
-    username: gust
-    password: gust
+    username: root
+    password: 123123
