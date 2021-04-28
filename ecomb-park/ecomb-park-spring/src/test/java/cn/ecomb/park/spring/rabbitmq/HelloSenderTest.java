@@ -1,11 +1,9 @@
-package cn.ecomb.common.rabbitmq.producer;
+package cn.ecomb.park.spring.rabbitmq;
 
-import cn.ecomb.common.rabbitmq.BaseTest;
+import cn.ecomb.park.spring.BaseTest;
 import org.junit.Test;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import static org.junit.Assert.*;
 
 /**
  * @author brian.zhou
@@ -14,17 +12,7 @@ import static org.junit.Assert.*;
 public class HelloSenderTest extends BaseTest {
 
 	@Autowired
-	private HelloSender helloSender;
-
-	@Autowired
 	private RabbitTemplate rabbitTemplate;
-
-	@Test
-	public void sendMessage() {
-		for (int i = 0; i < 10; i++) {
-			helloSender.sendMessage("{\"data\":\"hello\" " + i + "}");
-		}
-	}
 
 	@Test
 	public void test() throws InterruptedException {

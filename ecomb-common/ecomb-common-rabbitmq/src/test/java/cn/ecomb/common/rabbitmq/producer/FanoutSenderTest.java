@@ -27,6 +27,11 @@ public class FanoutSenderTest extends BaseTest {
 		for (int i = 0; i < 10; i++) {
 //			routingKey 会被忽略
 			rabbitTemplate.convertAndSend(HELLO_FANOUT.getExchange(), "", "context");
+
+
+
+
+
 //			rabbitTemplate.convertAndSend(HELLO_FANOUT_ONE.getExchange(), HELLO_FANOUT_ONE.getRoutingKey(), "context_one");
 		}
 	}

@@ -1,4 +1,4 @@
-package cn.ecomb.common.rabbitmq.config;
+package cn.ecomb.park.spring.rabbitmq.config;
 
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
@@ -6,7 +6,6 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.connection.RabbitConnectionFactoryBean;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,8 +15,8 @@ import org.springframework.core.env.Environment;
 
 import java.util.Objects;
 
-import static cn.ecomb.common.rabbitmq.config.QueueEnum.HELLO_FANOUT;
-import static cn.ecomb.common.rabbitmq.config.QueueEnum.HELLO_FANOUT_ONE;
+import static cn.ecomb.park.spring.rabbitmq.config.QueueEnum.HELLO_FANOUT;
+import static cn.ecomb.park.spring.rabbitmq.config.QueueEnum.HELLO_FANOUT_ONE;
 
 /**
  * @author brian.zhou

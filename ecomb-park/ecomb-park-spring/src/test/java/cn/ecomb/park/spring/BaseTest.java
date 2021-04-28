@@ -15,6 +15,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @Ignore
 @SpringBootTest(classes = TestApplication.class)
 @RunWith(SpringJUnit4ClassRunner.class)
-@ActiveProfiles("kafka")
+@ActiveProfiles("rabbitmq")
 public class BaseTest {
 }
