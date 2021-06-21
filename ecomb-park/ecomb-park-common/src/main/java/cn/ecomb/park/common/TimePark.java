@@ -60,19 +60,42 @@ public class TimePark {
 		sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
 		Date date = sdf.parse(dataStr);
 
+
+
 		Calendar calendar = Calendar.getInstance();
 		calendar.clear();
-		calendar.setTime(date);
+//		calendar.setTime(date);
+		calendar.setTimeInMillis(System.currentTimeMillis());
 
 		sdf.setTimeZone(TimeZone.getTimeZone(targetZone));
 		return sdf.format(calendar.getTime());
 
 	}
 
+	/**
+	 * 将时间戳转换为目标时区的日期时间
+	 *
+	 * @param millis 时间戳
+	 * @param targetZone 目标时区
+	 * @return
+	 * @throws ParseException
+	 */
+	public static String date2ZoneDate(long millis, String targetZone) throws ParseException {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.clear();
+		calendar.setTimeInMillis(millis);
+
+		sdf.setTimeZone(TimeZone.getTimeZone(targetZone));
+		return sdf.format(calendar.getTime());
+	}
+
 
 
 	public static void main(String[] args) throws ParseException {
-		TimePark.date2ZoneDate("2021-06-15 17:38:12", "America/New_York");
+		System.out.println(TimePark.date2ZoneDate("2021-06-15 17:38:12", "America/New_York"));
 
 	}
 }
