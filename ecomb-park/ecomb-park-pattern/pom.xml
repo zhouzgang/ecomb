@@ -3,22 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>ecomb</artifactId>
+        <artifactId>ecomb-park</artifactId>
         <groupId>cn.ecomb</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ecomb-park</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>ecomb-park-common</module>
-        <module>ecomb-park-pool</module>
-        <module>ecomb-park-hello</module>
-        <module>ecomb-park-spi</module>
-        <module>ecomb-park-spring</module>
-        <module>ecomb-park-pattern</module>
-    </modules>
+    <artifactId>ecomb-park-pattern</artifactId>
 
 
 </project>
