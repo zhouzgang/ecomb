@@ -1,9 +1,9 @@
 ##  高 CPU 处理实践笔记
 
-```shell
+```shell script
 # top 发现问题 找到PID。
 ps aux | grep PID #查看具体 程序。
-ps -mp &PID -o THREAD,tid,tim；
+ps -mp &PID -o THREAD,tid,tim;
 # 定位到问题线程id。
 printf "%x\n" tid #转换 tid 为 16进制格式。
 jstack PID | grep tid -A60 #打印堆栈信息 ，定位问题代码。
@@ -14,7 +14,7 @@ sudo dtruss -ap pid #现实线程id
 ```
 
 - 找出导致高 CPU 的线程脚本
-```shell
+```shell script
 #!/bin/sh
 ts=$(date +"%s")
 jvmPid=$1
