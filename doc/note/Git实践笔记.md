@@ -33,6 +33,11 @@ git add .
 git commit -m 'update .gitignore'
 ```
 
+**修改 commit 的 message**
+```shell script
+git commit --amend
+```
+
 **更新目录下所有 git 仓库**
 ## 脚本
 ```shell script

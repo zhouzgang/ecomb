@@ -18,6 +18,8 @@
         <module>ecomb-park-spi</module>
         <module>ecomb-park-spring</module>
         <module>ecomb-park-pattern</module>
+        <module>ecomb-park-class-load</module>
+        <module>ecomb-park-apollo</module>
     </modules>
 
 

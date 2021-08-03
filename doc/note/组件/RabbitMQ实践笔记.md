@@ -1,6 +1,6 @@
 ## RabbitMQ 实践笔记
 
-![RabbitMQ架构图](./images/rabbitmq架构图.png)
+![RabbitMQ架构图][doc/note/images/rabbitmq架构图.png]
 
 ### 需求场景
 - 异步处理。下单后，邮件或短信通知用户
@@ -57,3 +57,5 @@ docker run -d -p 5672:5672 -p 15672:15672 --name myrabbitmq IMAGE_ID
 **参考网址**
 - [这也许是最全面透彻的一篇RabbitMQ指南](https://dbaplus.cn/news-141-1464-1.html)
 - [延时队列实现](https://www.cnblogs.com/mfrank/p/11260355.html)
+
+[doc/note/images/rabbitmq架构图.png]: ../images/rabbitmq架构图.png
