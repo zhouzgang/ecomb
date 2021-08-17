@@ -1,4 +1,4 @@
-package cn.ecomb.common.rabbitmq.consumer;
+package cn.ecomb.park.spring.rabbitmq.consumer;
 
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
@@ -19,13 +19,13 @@ import java.util.Map;
 @Component
 public class HelloConsumer {
 
-//	@RabbitListener(queues = "test.queue", concurrency = "4")
+	@RabbitListener(queues = "test.queue", concurrency = "4")
 	public void process(String result, Message message, @Headers Map<String, Object> headers, Channel channel)
 			throws IOException {
-		log.info("【监听到队列消息】 - 【消费时间】 - [{}]- 【消费者】 - [{}]-【消息内容】 - [{}]", new Date(), "precess", result.toString());
+		log.info("【监听到队列消息】 - 【消费时间】 - [{}]- 【消费者】 - [{}]-【消息内容】 - [{}]", new Date(), "precess", result);
 	}
 
-//	@RabbitListener(queues = "test.one.queue", concurrency = "4")
+	@RabbitListener(queues = "test.one.queue", concurrency = "4")
 	public void processOne(String result, Message message, @Headers Map<String, Object> headers, Channel channel)
 			throws IOException {
 		log.info("【监听到队列消息】 - 【消费时间】 - [{}]- 【消费者】 - [{}]-【消息内容】 - [{}]", new Date(), "precessOne", result);

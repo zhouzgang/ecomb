@@ -1,6 +1,19 @@
 spring:
   rabbitmq:
-    host: 127.0.0.1
+    host: rmq.llm
     port: 5672
     username: root
     password: 123123
+#    host: rabbitmq-brian.cn
+#    port: 5672
+#    password: ffrLJ1HaKv
+#    username: user
+#    listener.direct.acknowledge-mode: manual
+#    listener.simple.acknowledge-mode: manual
+#    listener.simple.concurrency: 1
+#    listener.simple.max-concurrency: 10
+#    listener.simple.prefetch: 1
+#    publisher-confirm-type: correlated
+#    publisher-returns: true
+#    virtual-host: hpay_member
+#    publisher-confirms: true

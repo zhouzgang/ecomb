@@ -9,11 +9,11 @@ import org.springframework.context.ConfigurableApplicationContext;
  * @author brian.zhou
  * @date 2021/4/20
  */
-@SpringBootApplication
-public class Application {
+@SpringBootApplication(scanBasePackages = {"cn.ecomb.*"})
+public class ParkApplication {
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+		ConfigurableApplicationContext context = SpringApplication.run(ParkApplication.class, args);
 		IServiceProvider serviceProvider = context.getBean(IServiceProvider.class);
 		serviceProvider.sayHello();
 	}
