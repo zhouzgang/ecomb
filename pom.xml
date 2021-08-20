@@ -15,6 +15,7 @@
         <module>ecomb-common</module>
         <module>ecomb-park</module>
         <module>ecomb-svc</module>
+        <module>ecomb-integration</module>
     </modules>
 
     <parent>
