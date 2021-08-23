@@ -20,6 +20,7 @@
         <module>ecomb-park-pattern</module>
         <module>ecomb-park-class-load</module>
         <module>ecomb-park-apollo</module>
+        <module>ecomb-park-state-machine</module>
     </modules>
 
 

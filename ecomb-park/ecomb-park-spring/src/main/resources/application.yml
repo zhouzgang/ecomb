@@ -1,8 +1,12 @@
 spring:
   rabbitmq:
-    host: rmq.llm
+    host: 192.168.1.62
     port: 5672
     username: root
     password: 123123
 server:
   port: 8081
+
+test:
+  v1:
+    ppp: fasd

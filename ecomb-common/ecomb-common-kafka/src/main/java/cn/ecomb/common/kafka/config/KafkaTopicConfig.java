@@ -1,4 +1,4 @@
-package cn.ecomb.common.kafka;
+package cn.ecomb.common.kafka.config;
 
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;

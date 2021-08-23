@@ -1,6 +1,6 @@
 package cn.ecomb.common.kafka.consumer;
 
-import cn.ecomb.common.kafka.KafkaConstant;
+import cn.ecomb.common.kafka.config.KafkaConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;

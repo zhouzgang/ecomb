@@ -1,14 +1,12 @@
 package cn.ecomb.common.kafka.producer;
 
 import cn.ecomb.common.kafka.BaseTest;
-import cn.ecomb.common.kafka.KafkaConstant;
+import cn.ecomb.common.kafka.config.KafkaConstant;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
-
-import static org.junit.Assert.*;
 
 /**
  * @author brian.zhou

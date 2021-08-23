@@ -1,6 +1,6 @@
 package cn.ecomb.common.kafka.producer;
 
-import cn.ecomb.common.kafka.KafkaConfig;
+import cn.ecomb.common.kafka.config.KafkaConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Autowired;

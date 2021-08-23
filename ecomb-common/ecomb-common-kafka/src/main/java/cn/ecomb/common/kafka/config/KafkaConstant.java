@@ -1,4 +1,4 @@
-package cn.ecomb.common.kafka;
+package cn.ecomb.common.kafka.config;
 
 /**
  * @author brian.zhou
