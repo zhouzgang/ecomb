@@ -28,7 +28,8 @@ git cherry-pick 00b325f875ce1d54d0a605ddac579d106e378e9d
 
 **.gitignore 新加规则不生效**
 ```shell script
-git rm -r --cached . # 这一步会删除所有 cached，但是不影响操作，继续执行就行。
+# 这一步会删除所有 cached，但是不影响操作，继续执行就行。
+git rm -r --cached . 
 git add .
 git commit -m 'update .gitignore'
 ```
