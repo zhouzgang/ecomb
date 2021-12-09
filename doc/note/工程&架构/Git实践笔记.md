@@ -13,6 +13,15 @@ git rebase -i HEAD~2
 git push -f
 ```
 
+**git 找回丢失的 commit**
+一通 git rebase/revert 操作失误后，导致 commit 不见。
+git 的 commit 并不会真的丢失。
+```shell script
+git reflog  # 找到要回退到的 commit sha
+git checkout -b branch_back [commit sha]
+# 拿到 commit 后，使用 rebase/cherry-pick 都可以往目标分支加 commit。
+```
+
 **拉取**
 ```shell script
 git fetch -a --prune --tags
