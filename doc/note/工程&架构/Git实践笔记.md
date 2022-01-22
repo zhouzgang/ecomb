@@ -1,10 +1,11 @@
 ## Git 实践笔记
+[Git 文档](https://git-scm.com/docs)
 
 ### 使用规范
 第一目标是分支线路简单清晰。
-- 分支创建要基于功能，而不是个人
-- 不是使用 merge，使用 cherry-pick 合并提交
-- 不重复推送无意义的提交，合并多个修改后一次性提交
+- 分支创建要基于功能，而不是个人。
+- 不是使用 merge，使用 cherry-pick 合并提交。
+- 不重复推送无意义的提交，合并多个修改后一次性提交。
 
 ### 使用笔记
 **git 合并多个 commit，并提交到远程仓库** 
@@ -13,11 +14,18 @@ git rebase -i HEAD~2
 git push -f
 ```
 
-**git 找回丢失的 commit**
-一通 git rebase/revert 操作失误后，导致 commit 不见。
-git 的 commit 并不会真的丢失。
+**查看历史操作记录**
 ```shell script
-git reflog  # 找到要回退到的 commit sha
+# 查看历史操作记录，分析问题
+git reflog
+```
+
+**git 找回丢失的 commit**
+- 一通 git rebase/revert 操作失误后，导致 commit 不见。
+- git 的 commit 并不会真的丢失。
+```shell script
+# 查看历史操作记录，找到要回退到的 commit sha
+git reflog  
 git checkout -b branch_back [commit sha]
 # 拿到 commit 后，使用 rebase/cherry-pick 都可以往目标分支加 commit。
 ```
@@ -46,6 +54,12 @@ git commit -m 'update .gitignore'
 **修改 commit 的 message**
 ```shell script
 git commit --amend
+```
+
+**对齐本地与远程仓库的分支与tag**
+```shell script
+# 对齐本地与远程仓库的分支与tag
+git pull -p
 ```
 
 **更新目录下所有 git 仓库**
