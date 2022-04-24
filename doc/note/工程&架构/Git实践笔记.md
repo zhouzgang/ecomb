@@ -62,6 +62,13 @@ git commit --amend
 git pull -p
 ```
 
+**修改分支名**
+```shell script
+git branch -m oldName newName
+git push --delete origin oldName
+git push --set-upstream origin oldName
+```
+
 **更新目录下所有 git 仓库**
 ## 脚本
 ```shell script
