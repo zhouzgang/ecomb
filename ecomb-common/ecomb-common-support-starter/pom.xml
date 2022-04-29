@@ -11,5 +11,11 @@
 
     <artifactId>ecomb-common-support-starter</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>cn.ecomb</groupId>
+            <artifactId>ecomb-common-support</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>
