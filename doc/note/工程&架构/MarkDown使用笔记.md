@@ -1,6 +1,7 @@
 ### MarkDown 使用笔记
 
 ### 绘制序列图 Sequence Diagram
+> actor 在 mermaid 中是一个 bug
 
 ```seq
 Andrew->China: Says Hello
