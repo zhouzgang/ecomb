@@ -1,4 +1,4 @@
-##  高 CPU 处理实践笔记
+##  高 CPU 使用率处理实践笔记
 
 ```shell script
 # top 发现问题 找到PID。
