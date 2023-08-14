@@ -21,6 +21,7 @@
         <module>ecomb-park-class-load</module>
         <module>ecomb-park-apollo</module>
         <module>ecomb-park-state-machine</module>
+        <module>ecomb-park-liteflow</module>
     </modules>
 
 
